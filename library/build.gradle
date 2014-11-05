@@ -7,17 +7,23 @@ buildscript {
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
+    compileSdkVersion rootProject.ext.sdkVersion
+    buildToolsVersion rootProject.ext.btVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSDKVersion
+        targetSdkVersion rootProject.ext.sdkVersion
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
                 java.srcDirs = ['src']
         }
     }
-    compileSdkVersion rootProject.ext.sdkVersion
-    buildToolsVersion rootProject.ext.btVersion
 }
 
 android.libraryVariants
